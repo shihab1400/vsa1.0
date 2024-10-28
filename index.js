@@ -104,12 +104,12 @@ function insertionSort() {
       heightArray[jjj] = ttt;
       bars[jjj].style.height = `${heightArray[jjj]}rem`;
       bars[jjj - 1].style.height = `${heightArray[jjj - 1]}rem`;
-      bars[jjj - 1].style.background = "aqua";
       jjj--;
    } else {
       iii++;
       jjj = iii;
    }
+   bars[jjj - 1].style.background = "aqua";
    if (iii == heightArray.length) {
       bars[iii - 1].style.background = "aqua";
       clearInterval(myInterval);
