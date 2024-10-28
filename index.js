@@ -7,16 +7,22 @@ var myInterval;
 var heightArray = [];
 var c = 0;
 var rnHeight;
-
+var unsortColor = "#AF1740";
+var sortColor = "#608BC1";
 function unsort() {
    bars.forEach((bar) => {
       rnHeight = Math.floor(Math.random() * 35) + 5;
       heightArray[c++] = rnHeight;
       bar.style.height = `${rnHeight}rem`;
-      bar.style.background = "red";
+      bar.style.background = unsortColor;
    });
+   btnEnable();
 }
-unsort();
+
+btnBubbleSort.disabled = true;
+btnSelectionSort.disabled = true;
+btnInsertionSort.disabled = true;
+
 btnUnsort.addEventListener("click", () => {
    c = 0;
    unsort();
@@ -41,12 +47,12 @@ function bubbleSort() {
    }
    j++;
    if (j == heightArray.length - i - 1) {
-      bars[j].style.background = "aqua";
+      bars[j].style.background = sortColor;
       i++;
       j = 0;
    }
    if (i == heightArray.length - 1) {
-      bars[0].style.background = "aqua";
+      bars[0].style.background = sortColor;
       clearInterval(myInterval);
       i = 0;
       j = 0;
@@ -74,13 +80,13 @@ function selectionSort() {
       heightArray[min] = t;
       bars[ii].style.height = `${heightArray[ii]}rem`;
       bars[min].style.height = `${heightArray[min]}rem`;
-      bars[ii].style.background = "aqua";
+      bars[ii].style.background = sortColor;
       ii++;
       min = ii;
       jj = ii + 1;
    }
    if (ii === heightArray.length - 1) {
-      bars[ii].style.background = "aqua";
+      bars[ii].style.background = sortColor;
       clearInterval(myInterval);
       ii = 0;
       jj = ii + 1;
@@ -109,9 +115,9 @@ function insertionSort() {
       iii++;
       jjj = iii;
    }
-   bars[jjj - 1].style.background = "aqua";
+   bars[jjj - 1].style.background = sortColor;
    if (iii == heightArray.length) {
-      bars[iii - 1].style.background = "aqua";
+      bars[iii - 1].style.background = sortColor;
       clearInterval(myInterval);
       iii = 1;
       jjj = iii;
